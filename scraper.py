@@ -22,7 +22,7 @@ async def main():
             text = await article.inner_text()
             print(f"{text}\n"+("="*15))
 
-
+        print("this is written by development branch")
 
         input("enter to close browser: ")
         await browser.close()
