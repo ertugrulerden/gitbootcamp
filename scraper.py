@@ -11,7 +11,17 @@ async def main():
             headless=False)
         page = await context.new_page()
         
-        await page.goto('https://www.github.com', wait_until='domcontentloaded')
+        await page.goto('https://www.github.com/trending', wait_until='domcontentloaded')
+
+        articles = page.locator("article.Box-row")
+        count = await articles.count()
+        articles = await articles.all()
+        
+        print(f"{count} articles found")
+        for article in articles:
+            text = await article.inner_text()
+            print(f"{text}\n"+("="*15))
+
 
 
         input("enter to close browser: ")
