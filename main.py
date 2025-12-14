@@ -9,7 +9,7 @@ def another_example():
         print(f"item:{item}\n")
 
 def math_example(x, y):
-    print(x + y, x * y)
+    print(f"sum:{x + y} ", x * y)
 
 def nested_example():
     print("Nested.")
