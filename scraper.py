@@ -43,3 +43,9 @@ git restore --staged .
 
 git reset --soft/mixed/hard <commitHashID>
 """
+
+"""
+git tag <tagName> <commitHashID>
+
+git push origin <tagName>
+"""
