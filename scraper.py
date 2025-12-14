@@ -36,3 +36,10 @@ asyncio.run(main())
 #rebase
 #diff
 #git diff --staged
+
+"""
+git restore .
+git restore --staged .
+
+git reset --soft/mixed/hard <commitHashID>
+"""
