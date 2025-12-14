@@ -6,7 +6,7 @@ def example_function():
 def another_example():
     print("Anotherr.")
     for item in ["One", "Two", "Three", "four","five"]:
-        print(f"item:{item}")
+        print(f"item:{item}\n")
 
 def math_example(x, y):
     print(x + y, x * y)
