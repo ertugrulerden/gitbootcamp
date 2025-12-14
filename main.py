@@ -1,30 +1,38 @@
-def example_function():
-    print("Example.")
-    for i in range(3):
-        print(i + 1)
-
-def another_example():
-    print("Anotherr.")
-    for item in ["One", "Two", "Three", "four","five"]:
-        print(f"item:{item}\n")
-
-def math_example(x, y):
-    print(f"sum:{x + y} ", f"multiplication:{x * y}", f"substraction:{x-y}")
-
-def nested_example():
-    print("Nested.")
-    print("Inner.")
-    for c in "ABC":
-        print(c)
-
-def user_input_example():
-    print("Hello, TestUser")
-
-if __name__ == "__main__":
-    example_function()
-    another_example()
-    math_example(4, 7)
-    nested_example()
-    user_input_example()
+from resource import prlimit
+from patchright.async_api import async_playwright  # pyright: ignore[reportMissingImports]
+import asyncio
 
 
+async def main():
+    async with async_playwright() as p:
+
+        browser = await p.chromium.launch(headless=False)
+        context = await p.chromium.launch_persistent_context(
+            user_data_dir=str("browser_data"),
+            headless=False)
+        page = await context.new_page()
+        
+        await page.goto('https://www.github.com/trending', wait_until='domcontentloaded')
+
+        articles = page.locator("article.Box-row")
+        count = await articles.count()
+        articles = await articles.all()
+        
+        print(f"{count} articles found")
+        for article in articles:
+            text = await article.inner_text()
+            print(f"{text}\n"+("="*15))
+
+        print("this is written by main branch..")
+
+        input("enter to close browser: ")
+        await browser.close()
+
+        
+
+
+asyncio.run(main())
+#cherry-pick
+#rebase
+#diff
+#git diff --staged
