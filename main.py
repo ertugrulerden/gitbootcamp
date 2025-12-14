@@ -4,8 +4,8 @@ def example_function():
         print(i + 1)
 
 def another_example():
-    print("Another.")
-    for item in ["One", "Two", "Three"]:
+    print("Anotherr.")
+    for item in ["One", "Two", "Three", "four","five"]:
         print(item)
 
 def math_example(x, y):
